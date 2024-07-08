@@ -6,7 +6,7 @@
 ![Bitbucket open issues ](https://img.shields.io/bitbucket/issues/BrunoAugustoBignotto/django_aniversario?style=for-the-badge)
 
 
-<img src="blob/main/IMAGEM_1.PNG" alt="Exemplo imagem">
+<img src="IMAGEM_1.PNG" alt="Exemplo imagem">
 
 > Esta é a tela inicial. O Front End não foi priorizado, pois o objetivo era demonstrar conhecimento em Django.
 
