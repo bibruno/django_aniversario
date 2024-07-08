@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aniversários</title>
+  <style>
+    /* This is a CSS class for a panel element. It has a padding of 10px, a background color of #ddd, and a bottom margin of 20px. */
+    .panel {
+      padding: 10px;
+      background-color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    /* Styles for the buttons */
+    .button {
+      border: none;
+      color: black;
+      text-align: center;
+      display: inline-flex;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 12px;
+      padding: 1px 24px;
+      box-shadow: 0 3px #999;
+
+    }
+
+    .button:hover {
+      background-color: #57b4e9
+    }
+
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+    .edit-button {
+      background-color: yellow;
+    }
+
+    .delete-button {
+      background-color: red;
+    }
+
+    .save-button {
+      background-color: green;
+    }
+
+    /* Style for the body */
+    body {
+      background-color: lightgray;
+    }
+
+    /* Increased line spacing in the list */
+    ul {
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Meu primeiro projeto no GitHub pessoal</h1>
+
+  <div class="panel">
+    <p>Total de colaboradores: {{ team.count }}</p>
+    <p>Aniversariantes: {{ birthdays_count }}</p>
+    <p>Lista dos aniversariantes:</p>
+    <ul>
+      {% for collaborator in birthdays_today %}
+      <li>{{ collaborator.name }} - {{ collaborator.birth_date }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <form action="{% url 'save' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="colaborator_name" placeholder="Nome">
+    <input type="date" name="colaborator_birth_date" placeholder="Data de aniversário">
+    <input type="text" name="colaborator_cpf" placeholder="CPF">
+    <button type="submit" class="button save-button">Salvar</button>
+  </form>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <ul>
+    {% for colaborator in team %}
+    <li>
+      {{ colaborator.name }} - {{ colaborator.birth_date }}
+      <a href="{% url 'detail' colaborator.id %}" class="button edit-button">Editar</a>
+      <a href="{% url 'delete' colaborator.id %}" class="button delete-button">Apagar</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+</body>
+
+</html>

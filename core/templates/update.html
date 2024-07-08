@@ -1,0 +1,32 @@
+<!DOCTYPE html> <!-- Defines the document type as HTML -->
+<html lang="en"> <!-- Specifies the language of the document as English -->
+
+<head>
+  <meta charset="UTF-8"> <!-- Sets the character encoding for the document -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Sets compatibility with Internet Explorer -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sets the viewport for mobile devices -->
+  <title>Atualização</title> <!-- Sets the title of the document -->
+</head>
+
+<body>
+  <!-- Displays the id and name of 'collaborator' -->
+  {{ collaborator.id }} - {{ collaborator.name }}
+
+  <!-- Creates a form that, when submitted, calls the URL 'update' with the id of 'collaborator' -->
+  <form action="{% url 'update' collaborator.id %}" method="POST">
+    <!-- Adds a CSRF token to prevent CSRF attacks -->
+    {% csrf_token %}
+    <!-- Creates a text field for the name of 'collaborator', pre-filled with the current name -->
+    <input type="text" name="collaborator_name" value="{{ collaborator.name }}">
+    <!-- Creates a date field for the birth date of 'collaborator', pre-filled with the current birth date -->
+    <input type="date" name="collaborator_birth_date" value="{{ collaborator.birth_date|date:'Y-m-d' }}">
+    <!-- Creates a text field for the CPF of 'collaborator', pre-filled with the current CPF -->
+    <input type="text" name="collaborator_cpf" value="{{ collaborator.cpf }}">
+    <!-- Creates a button to submit the form -->
+    <button type="submit">Atualizar</button>
+    <a href="{% url 'home' %}"><button type="button">Cancelar</button></a>
+  </form>
+
+</body>
+
+</html>
