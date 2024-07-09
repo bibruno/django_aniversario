@@ -10,6 +10,8 @@
 
 > Esta é a tela inicial. O Front End não foi priorizado, pois o objetivo era demonstrar conhecimento em Django.
 
+### Link do vídeo de demonstração no Youtube
+https://youtu.be/bryqm4A7oIU?si=jh348WRgz0RbaKn0
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
@@ -59,6 +61,7 @@ python manage.py runserver
 ```
 
 Em seguida, abra seu navegador e acesse http://127.0.0.1:8000/core
+
 
 
 ## 📝 Licença

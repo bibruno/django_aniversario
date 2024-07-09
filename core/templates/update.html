@@ -20,13 +20,17 @@
     <input type="text" name="collaborator_name" value="{{ collaborator.name }}">
     <!-- Creates a date field for the birth date of 'collaborator', pre-filled with the current birth date -->
     <input type="date" name="collaborator_birth_date" value="{{ collaborator.birth_date|date:'Y-m-d' }}">
-    <!-- Creates a text field for the CPF of 'collaborator', pre-filled with the current CPF -->
-    <input type="text" name="collaborator_cpf" value="{{ collaborator.cpf }}">
     <!-- Creates a button to submit the form -->
     <button type="submit">Atualizar</button>
     <a href="{% url 'home' %}"><button type="button">Cancelar</button></a>
   </form>
-
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
 </body>
 
 </html>
